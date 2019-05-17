@@ -11,10 +11,19 @@
   
 
 
-.table-head {
+.table-head-sales {
+  width: 5rem ;
+}
+
+.table-data-sales {
+  background-color: ghostwhite;
+}
+
+
+.table-head-shifts {
   width: 9rem ;
 }
 
-.table-data {
+.table-data-shift {
   background-color: ghostwhite;
 }
