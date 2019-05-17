@@ -1,71 +1,71 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
+
 //import '../App.css'
 //import './shifts.css'
+import './sales.css';
 import '../vendor/bootstrap.min.css';
+import { workShift } from '../data/work_shifts'
 
 
 class Shifts extends Component {
-  static propTypes = {
-    shifts: PropTypes.array.isRequired
-  };
-
-  state = {
-    query: ''
-  };
-
-  updateQuery = query => {
-    this.setState({ query: query.trim() });
-  };
-
-  clearQuery = () => {
-    this.setState({ query: '' });
-  };
-
-  render() {
-    const { shifts } = this.props;
-    const { query } = this.state;
-
-    let showingShifts;
-    if (query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i');
-      showingShifts = shifts.filter(sale => match.test(sale.time));
-    } else {
-      showingShifts = shifts;
+    constructor(props) {
+        super(props)
+        this.state = {
+            shifts : workShift
+        }
     }
+    render() {
 
-   showingShifts.sort(sortBy('time'));
-  //ShiftsList.js-To-DO-LINE-37*** limit Shifts result to fit page height
+
+
     return (
        <div className="container">
             <div className="row">
 
             <table id="table">
-    <caption>Shifts</caption>
+    <caption>Shift Details</caption>
     <thead>
       <tr>
-        <th scope="col">Hour</th>
-        <th scope="col">Shifts</th>
+        <th className="table-head" scope="col">Start Time</th>
+        <th className="table-head" scope="col">End Time</th>
+        <th className="table-head" scope="col">Pay Rate</th>
+        <th className="table-head" scope="col">Break Note</th>
        
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td data-label="hour"> 
-        <ol className="sale-list">
-            {showingShifts.map(sale => (
-            <li key={sale.time} >{sale.time}</li>
+        <td className="table-data" data-label="start-time"> 
+        <ol className="table-ol">
+            {this.state.shifts.map(shift => (
+            <li key={shift.break_notes}>{shift.start_time}</li>
         ))}
         </ol>
         </td>
-        <td data-label="shifts"> <ol className="sale-list">{showingShifts.map(sale => (
-            <li key={sale.time}>{sale.amount}</li>
+        <td data-label="end-time"> 
+        <ol className="table-ol">
+        {this.state.shifts.map(shift => (
+            <li key={shift.break_notes}>{shift.end_time}</li>
+       
         ))}
         </ol>
-        
-</td>
+        </td>
+        <td data-label="end-time"> 
+        <ol className="table-ol">
+        {this.state.shifts.map(shift => (
+            <li key={shift.break_notes}>{shift.pay_rate}</li>
+       
+        ))}
+        </ol>
+        </td>
+        <td data-label="end-time"> 
+        <ol className="table-ol">
+        {this.state.shifts.map(shift => (
+            <li key={shift.break_notes}>{shift.break_notes}</li>
+       
+        ))}
+        </ol>
+        </td>
         
       </tr>
       
@@ -78,9 +78,6 @@ class Shifts extends Component {
   }
 }
 
-Shifts.propTypes = {
-  shifts: PropTypes.array.isRequired
-};
 
 export default Shifts;
 

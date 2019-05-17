@@ -1,51 +1,20 @@
-.sales-list-container {
+.table-container {
     max-width: 40vw;
     max-height: 100vh;
 }
 
-.vertical-align {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .vertical-align > [class^="col-"],
-  .vertical-align > [class*=" col-"] {
-    display: flex;
-    margin: 2rem;
-    align-items: center;
-    justify-content: center; /* Optional, to align inner items 
-                                horizontally inside the column */
-  }
-
-.showing-sales {
-    margin-top: 1rem;
-}
-
-.showing-sales span {
-    margin-right: 1rem;
-}
-
-.sales-details {
-    width: 30rem;
-}
-
-.card {
-    max-width: 30vw ;
-    margin: 2rem;
-
-}
-
-
-ol  {
+.table-ol  {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   
-.sale-list {
-  height: 30vw;
-  list-style-type: none;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 0;
+
+
+.table-head {
+  width: 9rem ;
+}
+
+.table-data {
+  background-color: ghostwhite;
 }
