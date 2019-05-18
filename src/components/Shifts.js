@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-
 import './components.css';
 import '../vendor/bootstrap.min.css';
 import { workShift } from '../data/work_shifts'
 
 //steps to calculate the Labor costs by hour worked for a resturant:
   //1. for each shif sum the total hrs worked and removing non paid hours such as break-time
-  //2. multiuply the hourly rate by number of hrs in each shift (in variable paidShiftHoursOne,paidShiftHoursTwo...)
-  //3. divide the  (variable paidShiftHoursOne,paidShiftHoursTwo...) for each shift by number of weeks in a year (52) keep the result in variable (labourCostPerShift)
+  //2. multiuply the hourly rate by number of hrs in each shift (in variable paidShiftHoursOne,paidShiftHoursTwo...) using paidPerShift function
+  //3. divide the  (variable paidShiftHoursOne,paidShiftHoursTwo...) for each shift by number of weeks in a year (52) using (labourCostPerShift) function
   //4. the result (labourCostPerShift) is the labour cost per shift
-  //5. add all (labourCostPerShift) together to get the (totalLabourCostPerShift)
+  //5. add all (labourCostPerShift) together to get the (totalLabourCostPerShift) (from accounting prospective, we have to add up all the labour cost per pay rates to get the restaurant labor cost 
   
   //Multiply Function
   function paidPerShift(payRate,paidShiftHours){
@@ -277,37 +276,19 @@ import { workShift } from '../data/work_shifts'
   let labourCostShiftSeven = labourCostPerShift(paidPerShiftSeven);
   
   
-  //Sum all Labour Cost per shift to get total labour cost 
+  //Sum all Labour Cost per shift to get total labour cost to use it as the resturants labor cost as per accounting principls when there are different pay rate
   
   
-  let totalLabourCost = labourCostShiftOne + labourCostShiftTwo + labourCostShiftThree + labourCostShiftFour + labourCostShiftFive + 
+  export let restaurantLabourCost = labourCostShiftOne + labourCostShiftTwo + labourCostShiftThree + labourCostShiftFour + labourCostShiftFive + 
   labourCostShiftSix + labourCostShiftSeven;
   
   
-  console.log(`labour cost shift one ${labourCostShiftOne} $`);
-  console.log('labourCostShiftTwo',labourCostShiftTwo);
-  console.log('labourCostShiftThree',labourCostShiftThree);
-  console.log('labourCostShiftFour',labourCostShiftFour);
-  console.log('labourCostShiftFive',labourCostShiftFive);
-  console.log('labourCostShiftSix',labourCostShiftSix);
-  console.log('labourCostShiftSeven',labourCostShiftSeven);
-  
-  console.log(`totalLabourCost ${totalLabourCost} $`);
-
 
 class Shifts extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            shifts : workShift,
-            labourCostShiftOne : labourCostShiftOne,
-            labourCostShiftTwo : labourCostShiftTwo,
-            labourCostShiftThree : labourCostShiftThree,
-            labourCostShiftFour : labourCostShiftFour,
-            labourCostShiftFive :labourCostShiftFive,
-            labourCostShiftSix : labourCostShiftSix,
-            labourCostShiftSeven: labourCostShiftSeven,
-            totalLabourCost : totalLabourCost
+            shifts : workShift
         }
     }
     render() {
@@ -315,6 +296,7 @@ class Shifts extends Component {
 
 
     return (
+        <div className="shifts">
        <div className="container">
             <div className="row">
 
@@ -369,7 +351,11 @@ class Shifts extends Component {
   </table>
     </div>
     </div>
-                
+    
+    
+    
+    
+    </div>
     );
   }
 }
