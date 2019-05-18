@@ -1,7 +1,12 @@
-*, body {
+*{
+  margin: 0;
+  padding: 0;
+  background-color: #222326;
+}
+
+body {
   font-family: "Open Sans", sans-serif;
   line-height: 1.25;
-  background-color: #222326;
 }
 
 .table-ol  {
@@ -16,14 +21,16 @@
   margin: 3rem;
 }
 
-.table-head {
-  width: 5rem ;
-  
+.dark-text{
+  color: #222326;
+}
+.purple-back{
+  background-color: #D97EF2;
 }
 
-
 .table-data {
-  color:#F2F2F2
+  color: #f2f2f2;
+
 }
 
 .purple-text {
@@ -45,12 +52,16 @@
     margin: 1rem;
 }
 
-.btn-outline-grey {
-  color: #F2F2F2;
-    border: 1px solid #F2F2F2;
+.btn-outline-green {
+  color: #99C794;
+    border: 1px solid #99C794;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
     margin: 1rem;
+}
+
+table-head-shifts {
+  width: 9rem ;
 }

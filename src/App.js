@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './components/components.css';
 import './App.css'
 import Shifts, { restaurantLabourCost  } from './components/Shifts';
 import Sales from './components/Sales';
@@ -360,6 +359,11 @@ toggleHiddenShifts () {
         
           <div className="container d-flex justify-content-center">
             <div className="row">
+            <h1 className="purple-text mt-4">Tenzo Coding Challange </h1>
+            </div>
+            </div>
+            <div className="container d-flex justify-content-center">
+            <div className="row">
               <div className="col-xs3">
                 <div className="card">
                   <div className="card-body">
@@ -385,11 +389,11 @@ toggleHiddenShifts () {
             
           <div className="container">
           <div className="row">
-
-          <table id="table" className="table-container table table-bordered table-dark table-hover">
+      <div class="table-responsive">
+          <table id="table" className="table-container table table-bordered table-dark">
   <caption>% = the cost of labour as percentage of sales</caption>
   <thead>
-    <tr className="text-center table-head purple-text">
+    <tr className="text-center text-uppercase purple-text">
       <th  scope="col">Hour</th>
       <th scope="col">Sales</th>
       <th scope="col">Labor Cost</th>
@@ -398,51 +402,51 @@ toggleHiddenShifts () {
     </tr>
   </thead>
   <tbody>
-  <tr>
-  <td className="table-data" data-label="hour"> 
+  <tr className="table-data">
+  <td  data-label="hour"> 
     10:00
   </td>
-  <td className="table-data" data-label="total"> 
+  <td data-label="total"> 
     {this.state.sumHrTen}
   </td>
-  <td className="table-data" data-label="labor"> 
+  <td data-label="labor"> 
     {this.state.laborCostForThisHrTen}
   </td>
-  <td className="table-data" data-label="%"> 
+  <td data-label="%"> 
   {this.state.laborOfSalesPercentHrTen}
 </td>
 </tr>
 <tr>
-  <td className="table-data" data-label="hour"> 
+  <td  data-label="hour"> 
     11:00
   </td>
-  <td className="table-data" data-label="total"> 
+  <td data-label="total"> 
     {this.state.sumHrEleven}
   </td>
-  <td className="table-data" data-label="labor"> 
+  <td data-label="labor"> 
   {this.state.laborCostForThisHrEleven}
   </td>
-  <td className="table-data" data-label="%"> 
+  <td  data-label="%"> 
   {this.state.laborOfSalesPercentHrEleven}
 </td>
 </tr>
 <tr>
-<td className="table-data" data-label="hour"> 
+<td  data-label="hour"> 
    12:00
 </td>
 
-  <td className="table-data" data-label="total"> 
+  <td  data-label="total"> 
   {this.state.sumHrTwelve}
   </td>
-  <td className="table-data" data-label="labor"> 
+  <td data-label="labor"> 
   {this.state.laborCostForThisHrTwelve}
   </td>
-  <td className="table-data" data-label="%"> 
+  <td data-label="%"> 
   {this.state.laborOfSalesPercentHrTwelve}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td  data-label="hour"> 
    13:00
 
 </td>
@@ -572,7 +576,9 @@ toggleHiddenShifts () {
 </tr>
     
   </tbody>
+  
 </table>
+</div>
   </div>
   </div>
   <div className="container d-flex justify-content-center">
@@ -580,13 +586,13 @@ toggleHiddenShifts () {
   <div>
       <button onClick={this.toggleHiddenSales.bind(this)} type="button" className="btn-outline-purple">Transactions Table</button>
       {!this.state.isHidden && <Sales />}</div>
-      <div>
-      <button onClick={this.toggleHiddenShifts.bind(this)} type="button" className="btn-outline-grey">Shifts Table </button>
-      {!this.state.isHiddenShifts && <Shifts />}</div>
-    </div>
-  
-  
   </div>
+  <div>
+  <div>
+      <button onClick={this.toggleHiddenShifts.bind(this)} type="button" className="btn-outline-green">Shifts Table </button>
+      {!this.state.isHiddenShifts && <Shifts />}</div>
+    
+  </div></div>
       </div>
     );
   }

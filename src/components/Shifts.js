@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './components.css';
+import '../App.css';
 import '../vendor/bootstrap.min.css';
 import { workShift } from '../data/work_shifts'
 
@@ -299,7 +299,7 @@ class Shifts extends Component {
         <div className="shifts">
        <div className="container">
             <div className="row">
-
+            <div class="table-responsive">
             <table id="table" className="table-container table table-dark">
     <caption>Shift Details</caption>
     <thead>
@@ -349,6 +349,7 @@ class Shifts extends Component {
       
     </tbody>
   </table>
+  </div>
     </div>
     </div>
     
