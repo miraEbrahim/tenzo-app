@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './App.css'
+
 import Shifts, { restaurantLabourCost  } from './components/Shifts';
 import Sales from './components/Sales';
-import { transactions } from './data/transactions'
-import './vendor/bootstrap.min.css'
-
+import { transactions } from './data/transactions';
+import './vendor/bootstrap.min.css';
+import './App.css';
 //Finding the most profitable hour  of sales only
 
 // extract an array of amount attribute values
@@ -367,7 +367,7 @@ toggleHiddenShifts () {
               <div className="col-xs3">
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title purple-text">
+                    <h5 className="card-title green-text">
                       {this.state.max.map(max => (`${max.time}`))}</h5>
                     <p className="card-text grey-text">{this.state.max.map(max => (`The Most Profitable Hour Of The Day with a transaction amount of ${max.amount}  £ `))}
                     </p>
@@ -378,7 +378,7 @@ toggleHiddenShifts () {
               <div className="col-xs3">
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title purple-text">
+                    <h5 className="card-title green-text">
                     {this.state.min.map(min => (`${min.time}`))}</h5>
                     <p className="card-text grey-text">{this.state.min.map(min => (`The Least Profitable Hour Of The Day with a transaction amount of ${min.amount}  £ `))}
                     </p>
@@ -390,7 +390,7 @@ toggleHiddenShifts () {
           <div className="container">
           <div className="row">
       <div class="table-responsive">
-          <table id="table" className="table-container table table-bordered table-dark">
+          <table id="table" className="table table-bordered table-dark">
   <caption>% = the cost of labour as percentage of sales</caption>
   <thead>
     <tr className="text-center text-uppercase purple-text">
@@ -402,174 +402,174 @@ toggleHiddenShifts () {
     </tr>
   </thead>
   <tbody>
-  <tr className="table-data">
-  <td  data-label="hour"> 
+  <tr>
+  <td className="text-center"  data-label="hour"> 
     10:00
   </td>
-  <td data-label="total"> 
-    {this.state.sumHrTen}
+  <td className="text-center" data-label="total"> 
+    {this.state.sumHrTen.toFixed(2)}
   </td>
-  <td data-label="labor"> 
-    {this.state.laborCostForThisHrTen}
+  <td className="text-center" data-label="labor"> 
+    {this.state.laborCostForThisHrTen.toFixed(2)}
   </td>
-  <td data-label="%"> 
-  {this.state.laborOfSalesPercentHrTen}
+  <td className="text-center" data-label="%"> 
+  {this.state.laborOfSalesPercentHrTen.toFixed(2)}
 </td>
 </tr>
 <tr>
-  <td  data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
     11:00
   </td>
-  <td data-label="total"> 
-    {this.state.sumHrEleven}
+  <td className="text-center" data-label="total"> 
+    {this.state.sumHrEleven.toFixed(2)}
   </td>
-  <td data-label="labor"> 
-  {this.state.laborCostForThisHrEleven}
+  <td className="text-center" data-label="labor"> 
+  {this.state.laborCostForThisHrEleven.toFixed(2)}
   </td>
-  <td  data-label="%"> 
-  {this.state.laborOfSalesPercentHrEleven}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrEleven.toFixed(2)}
 </td>
 </tr>
 <tr>
-<td  data-label="hour"> 
+<td className="text-center"  data-label="hour"> 
    12:00
 </td>
 
-  <td  data-label="total"> 
-  {this.state.sumHrTwelve}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrTwelve.toFixed(2)}
   </td>
-  <td data-label="labor"> 
-  {this.state.laborCostForThisHrTwelve}
+  <td className="text-center" data-label="labor"> 
+  {this.state.laborCostForThisHrTwelve.toFixed(2)}
   </td>
-  <td data-label="%"> 
-  {this.state.laborOfSalesPercentHrTwelve}
+  <td className="text-center" data-label="%"> 
+  {this.state.laborOfSalesPercentHrTwelve.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td  data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
    13:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrThirtn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrThirtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrThirtn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrThirtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrThirtn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrThirtn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
 
    14:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrFortn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrFortn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrFortn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrFortn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrFortn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrFortn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
 
    15:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrFiftn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrFiftn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrFiftn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrFiftn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrFiftn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrFiftn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
 
    16:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrSixtn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrSixtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrSixtn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrSixtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrSixtn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrSixtn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
 
    17:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrSevtn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrSevtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrSevtn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrSevtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrSevtn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrSevtn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
 
    18:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrEtn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrEtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrEtn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrEtn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrEtn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrEtn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
 
    19:00
 
 </td>
-  <td className="table-data" data-label="total"> 
-  {this.state.sumHrNitn}
+  <td className="text-center"  data-label="total"> 
+  {this.state.sumHrNitn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="labor"> 
-  {this.state.laborCostForThisHrNitn}
+  <td className="text-center"  data-label="labor"> 
+  {this.state.laborCostForThisHrNitn.toFixed(2)}
   </td>
-  <td className="table-data" data-label="%"> 
-  {this.state.laborOfSalesPercentHrNitn}
+  <td className="text-center"  data-label="%"> 
+  {this.state.laborOfSalesPercentHrNitn.toFixed(2)}
 </td>
   </tr>
   <tr>
-  <td className="table-data" data-label="hour"> 
+  <td className="text-center"  data-label="hour"> 
   
      21:00
   
   </td>
-    <td className="table-data" data-label="total"> 
-    {this.state.sumHrTwntwo}
+    <td className="text-center"  data-label="total"> 
+    {this.state.sumHrTwntwo.toFixed(2)}
     </td>
-    <td className="table-data" data-label="labor"> 
-    {this.state.laborCostForThisHrTwntwo}
+    <td className="text-center"  data-label="labor"> 
+    {this.state.laborCostForThisHrTwntwo.toFixed(2)}
     </td>
-    <td className="table-data" data-label="%"> 
-    {this.state.laborOfSalesPercentHrTwntwo}
+    <td className="text-center"  data-label="%"> 
+    {this.state.laborOfSalesPercentHrTwntwo.toFixed(2)}
   </td>
   
   
@@ -582,18 +582,24 @@ toggleHiddenShifts () {
   </div>
   </div>
   <div className="container d-flex justify-content-center">
-  <div className="row">
-  <div>
-      <button onClick={this.toggleHiddenSales.bind(this)} type="button" className="btn-outline-purple">Transactions Table</button>
-      {!this.state.isHidden && <Sales />}</div>
+            <div className="row">
+            <h4 className="purple-text mt-4 mb-4"> Given Data </h4>
+            </div>
+            </div>
+  <div className="container d-flex justify-content-center ">
+        <div className="row">
+            <div className="col-md-4 d-flex align-content-end flex-wrap">
+                 <Sales />
+            </div>
+            
+            <div className="col-md-8 d-flex align-content-start flex-wrap">
+               <Shifts />
+            
+            </div>
+          </div>
+        </div>
   </div>
-  <div>
-  <div>
-      <button onClick={this.toggleHiddenShifts.bind(this)} type="button" className="btn-outline-green">Shifts Table </button>
-      {!this.state.isHiddenShifts && <Shifts />}</div>
-    
-  </div></div>
-      </div>
+      
     );
   }
 }

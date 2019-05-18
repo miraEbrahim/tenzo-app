@@ -289,38 +289,37 @@ class Shifts extends Component {
         super(props)
         this.state = {
             shifts : workShift
-        }
+        };
     }
     render() {
 
 
 
     return (
-        <div className="shifts">
-       <div className="container">
+       <div className="container-fluid">
             <div className="row">
             <div class="table-responsive">
-            <table id="table" className="table-container table table-dark">
+            <table id="table" className=" table table-bordered table-dark">
     <caption>Shift Details</caption>
     <thead>
-      <tr>
-        <th className="table-head-shifts" scope="col">Start Time</th>
-        <th className="table-head-shifts" scope="col">End Time</th>
-        <th className="table-head-shifts" scope="col">Pay Rate</th>
-        <th className="table-head-shifts" scope="col">Break Note</th>
+      <tr className="text-center table-head-shifts green-text">
+        <th  scope="col">Start Time</th>
+        <th  scope="col">End Time</th>
+        <th scope="col">Pay Rate</th>
+        <th scope="col">Break Note</th>
        
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td className="table-data-shifts" data-label="start-time"> 
+        <td  data-label="start-time"> 
         <ol className="table-ol">
             {this.state.shifts.map(shift => (
             <li key={shift.break_notes}>{shift.start_time}</li>
         ))}
         </ol>
         </td>
-        <td className="table-data-shifts" data-label="end-time"> 
+        <td  data-label="end-time"> 
         <ol className="table-ol">
         {this.state.shifts.map(shift => (
             <li key={shift.break_notes}>{shift.end_time}</li>
@@ -328,7 +327,7 @@ class Shifts extends Component {
         ))}
         </ol>
         </td>
-        <td className="table-data-shifts" data-label="end-time"> 
+        <td  data-label="end-time"> 
         <ol className="table-ol">
         {this.state.shifts.map(shift => (
             <li key={shift.break_notes}>{shift.pay_rate}</li>
@@ -336,7 +335,7 @@ class Shifts extends Component {
         ))}
         </ol>
         </td>
-        <td className="table-data-shifts" data-label="end-time"> 
+        <td  data-label="end-time"> 
         <ol className="table-ol">
         {this.state.shifts.map(shift => (
             <li key={shift.break_notes}>{shift.break_notes}</li>
@@ -356,7 +355,7 @@ class Shifts extends Component {
     
     
     
-    </div>
+  
     );
   }
 }

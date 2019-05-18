@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import { transactions } from '../data/transactions';
+
 import '../App.css'
 import '../vendor/bootstrap.min.css';
 
@@ -15,7 +17,7 @@ class Sales extends Component {
         this.state = {
             sales : transactions
             
-        }
+        };
     }
 
 
@@ -28,31 +30,30 @@ class Sales extends Component {
 
 
     return (
-        <div className="sales">
        <div className="container">
-            <div className="row">
-            <div class="table-responsive">
-            <table className="able-container table table-bordered table-dark" id="table">
-    <caption>Sales Transactions</caption>
+       <div className="row">
+       <div className="table-responsive">
+       <table id="table" className=" table table-bordered table-dark">
+<caption>Sales Transactions</caption>
     <thead>
-      <tr text-center table-head purple-text>
+      <tr className="text-center table-head green-text">
         <th scope="col">Time</th>
         <th scope="col">Amount</th>
         </tr>
     </thead>
     <tbody>
-      <tr>
-        <td className="table-data" data-label="time"> 
+      <tr className="text-center">
+        <td data-label="time"> 
         <ol className="table-ol">
             {this.state.sales.map(sale => (
             <li key={sale.time}>{sale.time}</li>
         ))}
         </ol>
         </td>
-        <td className="table-data"data-label="amount"> 
+        <td data-label="amount"> 
         <ol className="table-ol">
         {this.state.sales.map(sale => (
-            <li key={sale.time}>{sale.amount}</li>
+            <li key={sale.time}>{sale.amount.toFixed(2)}</li>
        
         ))}
         </ol>
@@ -65,7 +66,7 @@ class Sales extends Component {
   </table>
   </div>
     </div>
-    </div>
+    
            
 
 

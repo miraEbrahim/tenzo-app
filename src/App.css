@@ -7,6 +7,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   line-height: 1.25;
+  color: #f2f2f2;
 }
 
 .table-ol  {
@@ -28,11 +29,6 @@ body {
   background-color: #D97EF2;
 }
 
-.table-data {
-  color: #f2f2f2;
-
-}
-
 .purple-text {
   color: #D97EF2;
 }
@@ -41,27 +37,9 @@ body {
   color: #F2F2F2;
 }
 
-.btn-outline-purple {
-  color: #D97EF2;
-    font-weight: 400;
-    border: 1px solid #D97EF2;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    margin: 1rem;
-}
-
-.btn-outline-green {
+.green-text {
   color: #99C794;
-    border: 1px solid #99C794;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    margin: 1rem;
 }
 
-table-head-shifts {
-  width: 9rem ;
-}
+
+
