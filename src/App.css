@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   background-color: #222326;
@@ -10,36 +10,32 @@ body {
   color: #f2f2f2;
 }
 
-.table-ol  {
+.table-ol {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
 
 .card {
   width: 18rem;
   margin: 3rem;
 }
 
-.dark-text{
+.dark-text {
   color: #222326;
 }
-.purple-back{
-  background-color: #D97EF2;
+.purple-back {
+  background-color: #d97ef2;
 }
 
 .purple-text {
-  color: #D97EF2;
+  color: #d97ef2;
 }
 
-.grey-text{
-  color: #F2F2F2;
+.grey-text {
+  color: #f2f2f2;
 }
 
 .green-text {
-  color: #99C794;
+  color: #99c794;
 }
-
-
-
