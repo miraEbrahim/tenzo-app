@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import './components/components.css';
 import Sales from './components/Sales'
-import Shifts, { restaurantLabourCost } from './components/Shifts';
+import Shifts, { restaurantLabourCost  } from './components/Shifts';
 import { transactions } from './data/transactions'
-
+import './vendor/bootstrap.min.css'
 
 //Finding the most profitable hour  of sales only
 
@@ -180,7 +180,7 @@ console.log('timeEtnAmount',timeEtnAmount);
 const sumHrEtn = timeEtnAmount.reduce((total,num) => {
     return total +=  num;
 });
-console.log('sumHrEtn',sumHrEtn);
+
 
 //hour 19:00 - 20:00
 //filter transactions for that specific hour
@@ -188,16 +188,18 @@ let timenitn = transactions.filter(transaction => {
     let nitn = transaction.time >='19' && transaction.time <='20';
     return nitn;
 });
-console.log('timenitn',timenitn);
+
+
 //create an array of the mount at the filtered hour (10-11)
 let timenitnAmount = Array.from(timenitn, o => o.amount);
-console.log('timenitnAmount',timenitnAmount);
+
+
 //sum the created array to get the total per hour
 
-const sumHrnitn = timenitnAmount.reduce((total,num) => {
+const sumHrNitn= timenitnAmount.reduce((total,num) => {
     return total +=  num;
 });
-console.log('sumHrnitn',sumHrnitn);
+
 
 //hour 20:00 - 21:00
 //filter transactions for that specific hour
@@ -230,30 +232,65 @@ const sumHrTwntwo = timeTwntwoAmount.reduce((total,num) => {
 
 
 
-//Labor as a percentage of sales steps
-// 1. total labour cost (restaurantLabourCost)
-// 2. total sales (totalSales)
-// 3. divide labour cost by total sales 
-// 3. multiply by 100
+//Labor as a percentage of sales per hour steps
+// 1. labour cost for that hour , sales for that hour
+// 2. divide labour cost by  sales 
+// 3. multiply the result by 100
 
 
-function percentage (totalSales){
-  return (totalSales * restaurantLabourCost)/100;
+function laborOfSales (salesHr){
+  let laborCost = restaurantLabourCost; 
+  return laborCost / salesHr
 }
-console.log(percentage(sumHrTwntwo)+"%")
-//Total Sales
-// let totalSales = transactions.map(element => element.amount).reduce((total, amount) => total + amount, 0); 
-// console.log(`totalsales ${totalSales} %`);
-//let divLabourSales = totalLabourCost / totalSales;
-// console.log(`divPercentage ${divLabourSales} %`);
-// let totalPercentage = divLabourSales * 100;
+function laborOfSalesPercent (laborOfSales){
+  return laborOfSales * 100;
+}
 
-// console.log(`totalPercentage ${totalPercentage} %`);
+// 10:00
+let laborOfSaleHrTen= laborOfSales(sumHrTen);
+let laborOfSalesPercentHrTen = laborOfSalesPercent(laborOfSaleHrTen);
+
+// 11:00
+let laborOfSaleHrEleven= laborOfSales(sumHrEleven);
+let laborOfSalesPercentHrEleven = laborOfSalesPercent(laborOfSaleHrEleven);
+
+// 12:00
+let laborOfSaleHrTwelve= laborOfSales(sumHrTwelve);
+let laborOfSalesPercentHrTwelve = laborOfSalesPercent(laborOfSaleHrTwelve);
+
+// 13:00
+let laborOfSaleHrThirtn= laborOfSales(sumHrThirtn);
+let laborOfSalesPercentHrThirtn = laborOfSalesPercent(laborOfSaleHrThirtn);
+
+//14:00
+let laborOfSaleHrFortn= laborOfSales(sumHrFortn);
+let laborOfSalesPercentHrFortn = laborOfSalesPercent(laborOfSaleHrFortn);
+
+//15:00
+let laborOfSaleHrFiftn= laborOfSales(sumHrFiftn);
+let laborOfSalesPercentHrFiftn = laborOfSalesPercent(laborOfSaleHrFiftn);
+
+//16:00
+let laborOfSaleHrSixtn= laborOfSales(sumHrSixtn);
+let laborOfSalesPercentHrSixtn = laborOfSalesPercent(laborOfSaleHrSixtn);
+
+//17:00
+let laborOfSaleHrSevtn= laborOfSales(sumHrSevtn);
+let laborOfSalesPercentHrSevtn = laborOfSalesPercent(laborOfSaleHrSevtn);
+
+//18:00
+let laborOfSaleHrEtn= laborOfSales(sumHrEtn);
+let laborOfSalesPercentHrEtn = laborOfSalesPercent(laborOfSaleHrEtn);
+
+//19:00
+let laborOfSaleHrNitn= laborOfSales(sumHrNitn);
+let laborOfSalesPercentHrNitn= laborOfSalesPercent(laborOfSaleHrNitn);
+console.log(laborOfSalesPercentHrNitn)
+//21:00
+let laborOfSaleHrTwntwo= laborOfSales(sumHrTwntwo);
+let laborOfSalesPercentHrTwntwo = laborOfSalesPercent(laborOfSaleHrTwntwo);
 
 
-// Hour	Sales	Labour	%
-// 7:00	100	    30	    30%
-// 8:00	300	    60	    20%
 
 
 
@@ -272,23 +309,27 @@ class App extends Component {
       sumHrSixtn  : sumHrSixtn,
       sumHrSevtn  : sumHrSevtn,
       sumHrEtn    : sumHrEtn,
-      sumHrnitn   : sumHrnitn,
+      sumHrNitn   : sumHrNitn,
       sumHrTwntwo : sumHrTwntwo,
       max: maxObjects,
       min: minObjects,
-      //laborTen: laborTen
-        
+      laborOfSalesPercentHrTen:laborOfSalesPercentHrTen,
+      laborOfSalesPercentHrEleven:laborOfSalesPercentHrEleven,
+      laborOfSalesPercentHrTwelve:laborOfSalesPercentHrTwelve,
+      laborOfSalesPercentHrThirtn:laborOfSalesPercentHrThirtn,
+      laborOfSalesPercentHrFortn:laborOfSalesPercentHrFortn,
+      laborOfSalesPercentHrFiftn:laborOfSalesPercentHrFiftn,
+      laborOfSalesPercentHrSixtn:laborOfSalesPercentHrSixtn,
+      laborOfSalesPercentHrSevtn:laborOfSalesPercentHrSevtn,
+      laborOfSalesPercentHrEtn:laborOfSalesPercentHrEtn,
+      laborOfSalesPercentHrNitn:laborOfSalesPercentHrNitn,
+      laborOfSalesPercentHrTwntwo:laborOfSalesPercentHrTwntwo
     }
 }
   render() {
     return (
       <div className="app">
-        <div className="container">
-         
-            <Sales />
-          
-            <Shifts />
-          </div>
+        
           <div className="container">
           <div className="row">
               <h4>
@@ -301,7 +342,7 @@ class App extends Component {
           <div className="container">
           <div className="row">
 
-          <table id="table" className="table-container">
+          <table id="table" className="table-container table table-dark table-hover">
   <caption>Summary</caption>
   <thead>
     <tr>
@@ -323,6 +364,9 @@ class App extends Component {
   <td className="table-data-sales" data-label="labor"> 
     {this.state.laborTen}
   </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrTen}
+</td>
 </tr>
 <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -331,28 +375,42 @@ class App extends Component {
   <td className="table-data-sales" data-label="total"> 
     {this.state.sumHrEleven}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrEleven}
+</td>
 </tr>
 <tr>
 <td className="table-data-sales" data-label="hour"> 
-
    12:00
-
 </td>
-
 
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrTwelve}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrTwelve}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
-
    13:00
 
 </td>
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrThirtn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrThirtn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -363,6 +421,12 @@ class App extends Component {
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrFortn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrFortn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -373,6 +437,12 @@ class App extends Component {
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrFiftn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrFiftn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -383,6 +453,12 @@ class App extends Component {
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrSixtn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrSixtn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -393,6 +469,12 @@ class App extends Component {
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrSevtn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrSevtn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -403,6 +485,12 @@ class App extends Component {
   <td className="table-data-sales" data-label="total"> 
   {this.state.sumHrEtn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrEtn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -411,8 +499,14 @@ class App extends Component {
 
 </td>
   <td className="table-data-sales" data-label="total"> 
-  {this.state.sumHrnitn}
+  {this.state.sumHrNitn}
   </td>
+  <td className="table-data-sales" data-label="labor"> 
+    
+  </td>
+  <td className="table-data-sales" data-label="%"> 
+  {this.state.laborOfSalesPercentHrNitn}
+</td>
   </tr>
   <tr>
   <td className="table-data-sales" data-label="hour"> 
@@ -423,7 +517,12 @@ class App extends Component {
     <td className="table-data-sales" data-label="total"> 
     {this.state.sumHrTwntwo}
     </td>
-  
+    <td className="table-data-sales" data-label="labor"> 
+    
+    </td>
+    <td className="table-data-sales" data-label="%"> 
+    {this.state.laborOfSalesPercentHrTwntwo}
+  </td>
   
   
 </tr>

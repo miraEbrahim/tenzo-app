@@ -1,7 +1,7 @@
-.table-container {
+/* .table-container {
     max-width: 40vw;
     max-height: 100vh;
-}
+} */
 
 .table-ol  {
     list-style-type: none;
@@ -11,19 +11,12 @@
   
 
 
-.table-head-sales {
+.table-head {
   width: 5rem ;
 }
 
-.table-data-sales {
-  background-color: ghostwhite;
-}
 
 
 .table-head-shifts {
   width: 9rem ;
-}
-
-.table-data-shift {
-  background-color: ghostwhite;
 }

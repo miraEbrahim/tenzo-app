@@ -267,11 +267,11 @@ import { workShift } from '../data/work_shifts'
   
   //Labour Cost Per Shifts
   
-  let labourCostShiftOne = labourCostPerShift(paidPerShiftOne);
-  let labourCostShiftTwo = labourCostPerShift(paidPerShiftTwo);
-  let labourCostShiftThree = labourCostPerShift(paidPerShiftThree);
+  export let labourCostShiftOne = labourCostPerShift(paidPerShiftOne);
+  export let labourCostShiftTwo = labourCostPerShift(paidPerShiftTwo);
+  export let labourCostShiftThree = labourCostPerShift(paidPerShiftThree);
   let labourCostShiftFour = labourCostPerShift(paidPerShiftFour);
-  let labourCostShiftFive = labourCostPerShift(paidPerShiftFive);
+  export let labourCostShiftFive = labourCostPerShift(paidPerShiftFive);
   let labourCostShiftSix = labourCostPerShift(paidPerShiftSix);
   let labourCostShiftSeven = labourCostPerShift(paidPerShiftSeven);
   
@@ -300,7 +300,7 @@ class Shifts extends Component {
        <div className="container">
             <div className="row">
 
-            <table id="table" className="table-container">
+            <table id="table" className="table-container table table-dark">
     <caption>Shift Details</caption>
     <thead>
       <tr>
