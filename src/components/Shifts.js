@@ -281,7 +281,7 @@ import { workShift } from '../data/work_shifts'
   
   export let restaurantLabourCost = labourCostShiftOne + labourCostShiftTwo + labourCostShiftThree + labourCostShiftFour + labourCostShiftFive + 
   labourCostShiftSix + labourCostShiftSeven;
-  
+  console.log(restaurantLabourCost+'here')
   
 
 class Shifts extends Component {

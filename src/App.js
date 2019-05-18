@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './components/components.css';
-import Sales from './components/Sales'
+import './App.css'
 import Shifts, { restaurantLabourCost  } from './components/Shifts';
+import Sales from './components/Sales';
 import { transactions } from './data/transactions'
 import './vendor/bootstrap.min.css'
 
@@ -246,50 +247,54 @@ function laborOfSalesPercent (laborOfSales){
   return laborOfSales * 100;
 }
 
+function laborCostForThisHour (laborOfSalesPercentHr,sumSales){
+  return laborOfSalesPercentHr / sumSales;
+}
+
 // 10:00
 let laborOfSaleHrTen= laborOfSales(sumHrTen);
 let laborOfSalesPercentHrTen = laborOfSalesPercent(laborOfSaleHrTen);
-
+let laborCostForThisHrTen = laborCostForThisHour(laborOfSalesPercentHrTen,sumHrTen)
 // 11:00
 let laborOfSaleHrEleven= laborOfSales(sumHrEleven);
 let laborOfSalesPercentHrEleven = laborOfSalesPercent(laborOfSaleHrEleven);
-
+let laborCostForThisHrEleven = laborCostForThisHour(laborOfSalesPercentHrEleven,sumHrEleven);
 // 12:00
 let laborOfSaleHrTwelve= laborOfSales(sumHrTwelve);
 let laborOfSalesPercentHrTwelve = laborOfSalesPercent(laborOfSaleHrTwelve);
-
+let laborCostForThisHrTwelve = laborCostForThisHour(laborOfSalesPercentHrTwelve,sumHrTwelve);
 // 13:00
 let laborOfSaleHrThirtn= laborOfSales(sumHrThirtn);
 let laborOfSalesPercentHrThirtn = laborOfSalesPercent(laborOfSaleHrThirtn);
-
+let laborCostForThisHrThirtn = laborCostForThisHour(laborOfSalesPercentHrThirtn,sumHrThirtn);
 //14:00
 let laborOfSaleHrFortn= laborOfSales(sumHrFortn);
 let laborOfSalesPercentHrFortn = laborOfSalesPercent(laborOfSaleHrFortn);
-
+let laborCostForThisHrFortn = laborCostForThisHour(laborOfSalesPercentHrFortn,sumHrFortn);
 //15:00
 let laborOfSaleHrFiftn= laborOfSales(sumHrFiftn);
 let laborOfSalesPercentHrFiftn = laborOfSalesPercent(laborOfSaleHrFiftn);
-
+let laborCostForThisHrFiftn = laborCostForThisHour(laborOfSalesPercentHrFiftn,sumHrFiftn);
 //16:00
 let laborOfSaleHrSixtn= laborOfSales(sumHrSixtn);
 let laborOfSalesPercentHrSixtn = laborOfSalesPercent(laborOfSaleHrSixtn);
-
+let laborCostForThisHrSixtn = laborCostForThisHour(laborOfSalesPercentHrSixtn,sumHrSixtn);
 //17:00
 let laborOfSaleHrSevtn= laborOfSales(sumHrSevtn);
 let laborOfSalesPercentHrSevtn = laborOfSalesPercent(laborOfSaleHrSevtn);
-
+let laborCostForThisHrSevtn = laborCostForThisHour(laborOfSalesPercentHrSevtn,sumHrSevtn);
 //18:00
 let laborOfSaleHrEtn= laborOfSales(sumHrEtn);
 let laborOfSalesPercentHrEtn = laborOfSalesPercent(laborOfSaleHrEtn);
-
+let laborCostForThisHrEtn = laborCostForThisHour(laborOfSalesPercentHrEtn,sumHrEtn);
 //19:00
 let laborOfSaleHrNitn= laborOfSales(sumHrNitn);
 let laborOfSalesPercentHrNitn= laborOfSalesPercent(laborOfSaleHrNitn);
-console.log(laborOfSalesPercentHrNitn)
+let laborCostForThisHrNitn = laborCostForThisHour(laborOfSalesPercentHrNitn,sumHrNitn);
 //21:00
 let laborOfSaleHrTwntwo= laborOfSales(sumHrTwntwo);
 let laborOfSalesPercentHrTwntwo = laborOfSalesPercent(laborOfSaleHrTwntwo);
-
+let laborCostForThisHrTwntwo = laborCostForThisHour(laborOfSalesPercentHrTwntwo,sumHrTwntwo);
 
 
 
@@ -300,6 +305,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isHidden: true,
+      isHiddenShifts:true,
       sumHrTen: sumHrTen,
       sumHrEleven : sumHrEleven,
       sumHrTwelve : sumHrTwelve,
@@ -323,204 +330,241 @@ class App extends Component {
       laborOfSalesPercentHrSevtn:laborOfSalesPercentHrSevtn,
       laborOfSalesPercentHrEtn:laborOfSalesPercentHrEtn,
       laborOfSalesPercentHrNitn:laborOfSalesPercentHrNitn,
-      laborOfSalesPercentHrTwntwo:laborOfSalesPercentHrTwntwo
+      laborOfSalesPercentHrTwntwo:laborOfSalesPercentHrTwntwo,
+      laborCostForThisHrTwntwo:laborCostForThisHrTwntwo,
+      laborCostForThisHrTen: laborCostForThisHrTen,
+      laborCostForThisHrEleven:laborCostForThisHrEleven,
+      laborCostForThisHrTwelve:laborCostForThisHrTwelve,
+      laborCostForThisHrThirtn:laborCostForThisHrThirtn,
+      laborCostForThisHrFortn:laborCostForThisHrFortn,
+      laborCostForThisHrFiftn:laborCostForThisHrFiftn,
+      laborCostForThisHrSixtn:laborCostForThisHrSixtn,
+      laborCostForThisHrSevtn:laborCostForThisHrSevtn,
+      laborCostForThisHrEtn:laborCostForThisHrEtn ,
+      laborCostForThisHrNitn:laborCostForThisHrNitn
     }
+}
+toggleHiddenSales () {
+  this.setState({
+    isHidden: !this.state.isHidden
+  })
+}
+toggleHiddenShifts () {
+  this.setState({
+    isHiddenShifts: !this.state.isHidden
+  })
 }
   render() {
     return (
       <div className="app">
         
-          <div className="container">
-          <div className="row">
-              <h4>
-              {this.state.max.map(max => (`The most profitable hour  of sales is ${max.time} with a transaction amount of ${max.amount}  £ `))}</h4>
-              <h4>
-              {this.state.min.map(min => (`The least profitable hour  of sales is ${min.time} with a transaction amount of ${min.amount}  £ `))}</h4>
-          </div>
-          
-          </div>
+          <div className="container d-flex justify-content-center">
+            <div className="row">
+              <div className="col-xs3">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title purple-text">
+                      {this.state.max.map(max => (`${max.time}`))}</h5>
+                    <p className="card-text grey-text">{this.state.max.map(max => (`The Most Profitable Hour Of The Day with a transaction amount of ${max.amount}  £ `))}
+                    </p>
+                   </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs3">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title purple-text">
+                    {this.state.min.map(min => (`${min.time}`))}</h5>
+                    <p className="card-text grey-text">{this.state.min.map(min => (`The Least Profitable Hour Of The Day with a transaction amount of ${min.amount}  £ `))}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           <div className="container">
           <div className="row">
 
-          <table id="table" className="table-container table table-dark table-hover">
-  <caption>Summary</caption>
+          <table id="table" className="table-container table table-bordered table-dark table-hover">
+  <caption>% = the cost of labour as percentage of sales</caption>
   <thead>
-    <tr>
-      <th className="table-head-shifts" scope="col">Hour</th>
-      <th className="table-head-shifts" scope="col">Sales</th>
-      <th className="table-head-shifts" scope="col">Labor Cost</th>
-      <th className="table-head-shifts" scope="col">%</th>
+    <tr className="text-center table-head purple-text">
+      <th  scope="col">Hour</th>
+      <th scope="col">Sales</th>
+      <th scope="col">Labor Cost</th>
+      <th  scope="col">%</th>
      
     </tr>
   </thead>
   <tbody>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
     10:00
   </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
     {this.state.sumHrTen}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    {this.state.laborTen}
+  <td className="table-data" data-label="labor"> 
+    {this.state.laborCostForThisHrTen}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrTen}
 </td>
 </tr>
 <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
     11:00
   </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
     {this.state.sumHrEleven}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrEleven}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrEleven}
 </td>
 </tr>
 <tr>
-<td className="table-data-sales" data-label="hour"> 
+<td className="table-data" data-label="hour"> 
    12:00
 </td>
 
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrTwelve}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrTwelve}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrTwelve}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
    13:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrThirtn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrThirtn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrThirtn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
 
    14:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrFortn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrFortn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrFortn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
 
    15:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrFiftn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrFiftn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrFiftn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
 
    16:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrSixtn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrSixtn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrSixtn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
 
    17:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrSevtn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrSevtn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrSevtn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
 
    18:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrEtn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrEtn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrEtn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
 
    19:00
 
 </td>
-  <td className="table-data-sales" data-label="total"> 
+  <td className="table-data" data-label="total"> 
   {this.state.sumHrNitn}
   </td>
-  <td className="table-data-sales" data-label="labor"> 
-    
+  <td className="table-data" data-label="labor"> 
+  {this.state.laborCostForThisHrNitn}
   </td>
-  <td className="table-data-sales" data-label="%"> 
+  <td className="table-data" data-label="%"> 
   {this.state.laborOfSalesPercentHrNitn}
 </td>
   </tr>
   <tr>
-  <td className="table-data-sales" data-label="hour"> 
+  <td className="table-data" data-label="hour"> 
   
      21:00
   
   </td>
-    <td className="table-data-sales" data-label="total"> 
+    <td className="table-data" data-label="total"> 
     {this.state.sumHrTwntwo}
     </td>
-    <td className="table-data-sales" data-label="labor"> 
-    
+    <td className="table-data" data-label="labor"> 
+    {this.state.laborCostForThisHrTwntwo}
     </td>
-    <td className="table-data-sales" data-label="%"> 
+    <td className="table-data" data-label="%"> 
     {this.state.laborOfSalesPercentHrTwntwo}
   </td>
   
@@ -530,6 +574,18 @@ class App extends Component {
   </tbody>
 </table>
   </div>
+  </div>
+  <div className="container d-flex justify-content-center">
+  <div className="row">
+  <div>
+      <button onClick={this.toggleHiddenSales.bind(this)} type="button" className="btn-outline-purple">Transactions Table</button>
+      {!this.state.isHidden && <Sales />}</div>
+      <div>
+      <button onClick={this.toggleHiddenShifts.bind(this)} type="button" className="btn-outline-grey">Shifts Table </button>
+      {!this.state.isHiddenShifts && <Shifts />}</div>
+    </div>
+  
+  
   </div>
       </div>
     );
